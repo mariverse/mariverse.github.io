@@ -1,6 +1,12 @@
 > [!note]- 老蒋 AI 思考
 > [除了更多裁员，AI还能带来什么？【AI中局思考01】](https://www.bilibili.com/video/BV1KRPie2Ej5/)
 
+> [!note] lowercase
+> Useful information that users should know, even when skimming content.
+
+> [!NOTE] capital
+> Useful information that users should know, even when skimming content.
+
 这 3 年的 AI 发展怎么去概括？我觉得至少有一个词是对的，有一个现象是对的，就是割裂，非常的割裂。资本圈、科技圈、媒体圈对 AI 的判断历经了数次的波动。虽然说大家也一波一波觉得 AI 是有泡沫的，有一些人觉得 AI 是有泡沫的，但是总体上大家是螺旋上升，越发乐观，而且越来越能达成共识和一致的就是：AI 一定是未来的发展方向。但是呢，普通人的体感明显出现了背离。虽然现在 AI 的知名度很高，因为有过几次大的破圈嘛，比如最近的 DeepSeek 对吧？但是真正实打实用过 AI 工具的，在全体国人中仍然是少数。而如果再加上一个限定条件，在猎奇尝鲜之后仍然能留下来，高频使用 AI 的，甚至生活被 AI 大幅改变的更是少之又少。我觉得可能只局限在一二线城市白领中的一小撮人里。
 
 在商业社会中，有很多人靠一个事儿稳定地赚到钱，是这件事儿有价值的最可靠的证明。
