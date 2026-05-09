@@ -3,6 +3,8 @@ import type { ShikiTransformer } from 'shiki'
 
 export {
   transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
   transformerNotationHighlight
 } from './shiki-official-transformers'
 

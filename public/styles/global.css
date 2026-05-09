@@ -59,6 +59,7 @@ span.katex-display {
 
   /* Code container */
   & pre {
+    color: inherit;
     margin: 0;
     padding-top: 0.85rem;
     padding-bottom: 0.85rem;
@@ -179,9 +180,34 @@ span.katex-display {
     min-width: 100%;
     display: inline-block;
   }
+  & .focused {
+    min-width: 100%;
+    display: inline-block;
+    background-color: rgba(149, 166, 183, 0.28) !important;
+  }
+  & .focused::before {
+    background-color: rgba(149, 166, 183, 0.28) !important;
+  }
   & .highlighted,
   & .highlighted::before {
     background-color: rgba(149, 166, 183, 0.32) !important;
+  }
+  & .highlighted.error,
+  & .highlighted.error::before {
+    background-color: rgba(244, 63, 94, 0.2) !important;
+  }
+  & .highlighted.warning,
+  & .highlighted.warning::before {
+    background-color: rgba(245, 158, 11, 0.2) !important;
+  }
+  & .highlighted.info,
+  & .highlighted.info::before {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+  }
+  &.has-focused .line:not(.focused),
+  &.has-focused .line:not(.focused)::before {
+    opacity: 0.35;
+    filter: saturate(0.7);
   }
 
   & .diff {

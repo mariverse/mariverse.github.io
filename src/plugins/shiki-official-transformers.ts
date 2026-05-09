@@ -164,3 +164,79 @@ export function transformerNotationHighlight(
     '@shikijs/transformers:notation-highlight'
   )
 }
+
+// Add error-level notation to the code block
+export interface TransformerNotationErrorLevelOptions {
+  /**
+   * Class for error lines
+   */
+  classLineError?: string
+  /**
+   * Class for warning lines
+   */
+  classLineWarning?: string
+  /**
+   * Class for info lines
+   */
+  classLineInfo?: string
+  /**
+   * Class added to the root element when the code has error-level notations
+   */
+  classActivePre?: string
+}
+/**
+ * Allow using `[!code error]`, `[!code warning]`, `[!code info]`.
+ */
+export function transformerNotationErrorLevel(
+  options: TransformerNotationErrorLevelOptions = {}
+): ShikiTransformer {
+  const {
+    classLineError = 'highlighted error',
+    classLineWarning = 'highlighted warning',
+    classLineInfo = 'highlighted info',
+    classActivePre = 'has-highlighted'
+  } = options
+
+  return transformerNotationMap(
+    {
+      classMap: {
+        error: classLineError,
+        warning: classLineWarning,
+        info: classLineInfo
+      },
+      classActivePre
+    },
+    '@shikijs/transformers:notation-error-level'
+  )
+}
+
+// Add a focus notation to the code block
+// https://github.com/shikijs/shiki/blob/main/packages/transformers/src/transformers/notation-focus.ts
+export interface TransformerNotationFocusOptions {
+  /**
+   * Class for focused lines
+   */
+  classActiveLine?: string
+  /**
+   * Class added to the root element when the code has focused lines
+   */
+  classActivePre?: string
+}
+/**
+ * Allow using `[!code focus]` notation in code to focus lines.
+ */
+export function transformerNotationFocus(
+  options: TransformerNotationFocusOptions = {}
+): ShikiTransformer {
+  const { classActiveLine = 'focused', classActivePre = 'has-focused' } = options
+
+  return transformerNotationMap(
+    {
+      classMap: {
+        focus: classActiveLine
+      },
+      classActivePre
+    },
+    '@shikijs/transformers:notation-focus'
+  )
+}
