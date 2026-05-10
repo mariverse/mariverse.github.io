@@ -1,16 +1,12 @@
 import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types';
 
-
-
-
-
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: "Arthals' ink",
+  title: "Haida",
   /** Will be used in index page & copyright declaration */
-  author: 'Arthals',
-  since: 2024,
+  author: 'Haida',
+  // since: 2024,
   /** Description metadata for your website. Can be used in page metadata. */
   description: '所见高山远木，阔云流风；所幸岁月盈余，了无拘束',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
@@ -62,8 +58,8 @@ export const theme: ThemeUserConfig = {
   /** Configure the footer of your site. */
   footer: {
     // Year format
-    year: `© ${new Date().getFullYear()}`,
-    // year: `© 2019 - ${new Date().getFullYear()}`,
+    // year: `© ${new Date().getFullYear()}`,
+    year: `© 2025 - ${new Date().getFullYear()}`,
     links: [
       // Registration link
       {
@@ -78,9 +74,9 @@ export const theme: ThemeUserConfig = {
       }
     ],
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
-    credits: false,
+    credits: true,
     /** Optional details about the social media accounts for this site. */
-    social: { github: 'https://github.com/zhuozhiyongde', email: 'mailto:zhuozhiyongde@126.com' }
+    social: { github: 'https://github.com/mariverse', email: 'mailto:zou.haida@qq.com' }
   },
 
   content: {
