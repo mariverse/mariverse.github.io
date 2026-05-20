@@ -1,10 +1,12 @@
 ---
 import config from 'virtual:config'
 
-import { Button, Collapse, Signature, Spoiler, Timeline } from 'astro-pure/user'
+import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
+import Signature from '@/components/Signature.astro'
 import PageLayout from '@/layouts/CommonPage.astro'
 import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
+import flclash from '@/assets/tools/flclash.png'
 import zotero from '@/assets/tools/zotero.png'
 
 const headings = [
@@ -39,25 +41,13 @@ const headings = [
 <PageLayout title='About' {headings} comment>
   <h2 id='general-talk' class='invisible m-0 h-0'>General Talk</h2>
   <p class='text-muted-foreground'>Developer / Designer / <del>Medical student </del></p>
-  <p>你好，我叫 Arthals，是一个兴趣使然、热爱编程的医学生。</p>
-  <p>
-    目前就读于北京大学医学部，同时修读计算机科学技术双学位。一边被 <del> 病理病生理药理 </del>
-    内外妇儿折磨，一边在
-    <del> ICS 的 Lab 作业 </del> Pytorch 中 debug 到头秃。
-  </p>
-  <p>我即将在北京大学先进制造与机器人学院攻读博士学位。</p>
-  <p>我的兴趣主要在 Large Language Model / Embodied AI 方向。</p>
-  <p>我喜欢 Minecraft。</p>
+  <p>你好，我是邹海达，是一个兴趣使然、热爱编程的医学生。</p>
+  <p>是的，Mariverse 就是我给自己取的用户名字。</p>
   <div class='flex w-fit gap-x-2'>
     <!-- <img
       src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fzhuozhiyongde&count_bg=%23000000&title_bg=%23000000&icon=spacex.svg&icon_color=%23E7E7E7&title=Hits&edge_flat=true'
       class='my-0 rounded-md border'
     /> -->
-    <img
-      alt='CodeTime Badge'
-      src='https://shields.jannchie.com/endpoint?style=flat&color=222&url=https%3A%2F%2Fapi.codetime.dev%2Fv3%2Fusers%2Fshield%3Fuid%3D20455'
-      class='rounded-md border'
-    />
   </div>
 
   {/* tools */}
@@ -74,16 +64,16 @@ const headings = [
         icon: import('@/assets/tools/arc.svg?raw')
       },
       {
-        name: 'Tailscale',
-        description: 'VPN',
-        href: 'https://tailscale.com/',
-        icon: import('@/assets/tools/tailscale.svg?raw')
+        name: 'Flclash',
+        description: 'Proxy Client',
+        href: 'https://github.com/chen08209/FlClash',
+        icon: flclash
       },
       {
-        name: 'Typora',
+        name: 'Obsidian',
         description: 'Markdown Editor',
-        href: 'https://typora.io/',
-        icon: import('@/assets/tools/typora.svg?raw')
+        href: 'https://obsidian.md/',
+        icon: import('@/assets/tools/obsidian.svg?raw')
       },
       {
         name: 'Zotero',
@@ -98,11 +88,11 @@ const headings = [
     title='Development'
     tools={[
       {
-        name: 'Cursor',
-        description: 'AI Code Editor',
-        href: 'https://www.cursor.com/',
-        icon: import('@/assets/tools/cursor.svg?raw'),
-        darkIcon: import('@/assets/tools/cursor_dark.svg?raw')
+        name: 'OpenCode',
+        description: 'The open source AI coding agent',
+        href: 'https://opencode.ai/',
+        icon: import('@/assets/tools/opencode-logo-light.svg?raw'),
+        darkIcon: import('@/assets/tools/opencode-logo-dark.svg?raw')
       },
       {
         name: 'VS Code',
@@ -111,20 +101,21 @@ const headings = [
         icon: import('@/assets/tools/vscode.svg?raw')
       },
       {
-        name: 'Warp',
+        name: 'Windows Terminal & WSL2 Debian 12',
         description: 'Terminal',
-        href: 'https://warp.dev/',
-        icon: import('@/assets/tools/warp.svg?raw')
+        href: 'https://learn.microsoft.com/windows/terminal/',
+        icon: import('@/assets/tools/terminal.svg?raw')
       },
       {
-        name: 'LobeChat',
-        description: 'AI Chat',
-        href: 'https://www.lobehub.com/',
-        icon: import('@/assets/tools/lobechat.svg?raw')
+        name: 'Zen',
+        description: 'Privacy Browser',
+        href: 'https://zen-browser.app/',
+        icon: import('@/assets/tools/zen-light.svg?raw'),
+        darkIcon: import('@/assets/tools/zen-dark.svg?raw')
       }
     ]}
   />
-  <ToolSection
+  <!-- <ToolSection
     class='mb-5'
     title='Design'
     tools={[
@@ -165,7 +156,7 @@ const headings = [
         icon: import('@/assets/tools/ubuntu.svg?raw')
       }
     ]}
-  />
+  /> -->
 
   {/* social-networks */}
   <h2 id='social-networks'>Social Networks</h2>
@@ -175,60 +166,60 @@ const headings = [
       {
         platform: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/zhuozhiyongde',
+        link: 'https://github.com/mariverse',
         text: 'followers',
-        api: 'github/zhuozhiyongde'
+        api: 'github/mariverse'
       },
       {
         platform: 'Zhihu',
         icon: 'zhihu',
         color: '#0084ff',
-        link: 'https://www.zhihu.com/people/zhuozhiyongde',
+        link: 'https://www.zhihu.com/people/zou-hai-da',
         text: 'followers',
-        count: 356
+        count: 3
       },
       {
         platform: 'Bilibili',
         icon: 'bilibili',
         color: '#fe7398',
-        link: 'https://space.bilibili.com/203396427',
+        link: 'https://space.bilibili.com/345056959',
         text: 'followers',
-        count: 280
+        count: 35
       },
       {
         platform: 'Steam',
         icon: 'steam',
         color: '#50769d',
-        link: 'https://steamcommunity.com/profiles/76561199760864774/',
+        link: 'https://steamcommunity.com/profiles/76561199053763957/',
         text: 'games',
-        count: 1
+        count: 33
       }
     ]}
   />
 
   <h2 id='education'>Education</h2>
   <Timeline
-    events={[
+    <!-- events={[
       {
-        date: '2021-09-01',
-        content: '<a href="https://www.pku.edu.cn"target="_blank">北京大学</a>'
+        date: '2018-09-01',
+        content: '<a href="https://xjtu.edu.cn" target="_blank">西安交通大学</a>'
       },
       {
-        date: '2014-09-01',
-        content: '<a href="https://www.rdfz.cn/"target="_blank">中国人民大学附属中学</a>'
+        date: '2012-09-01',
+        content: '<a href="https://jxfzyz.net/" target="_blank">江西省抚州市第一中学</a>'
       }
-    ]}
+    ]} -->
   />
 
   <h2 id='experience'>Experience</h2>
   <Timeline
-    events={[
+    <!-- events={[
       {
         date: '2024-09-11',
         content:
           '<a href="https://slide.huh.moe/"target="_blank">北京大学 · 《计算机系统导论》课程助教</a>'
       }
-    ]}
+    ]} -->
   />
 
   {/* about-blog */}
@@ -249,9 +240,12 @@ const headings = [
         target='_blank'>Umami</a
       >
     </li>
-    <li>
-      粉丝数统计：<a href='https://github.com/spencerwooo/substats' target='_blank'>Substats</a>
+    <li>Waline 搭建：<a href='https://app.netlify.com/' target='_blank'>Netlify</a>（托管部署） + 
+      <a href="https://tidbcloud.com/" target="_blank">TiDB Cloud</a>
     </li>
+    <!-- <li>
+      粉丝数统计：<a href='https://github.com/spencerwooo/substats' target='_blank'>Substats</a>
+    </li> -->
   </ul>
-  {config.signature && <Signature />}
+  <Signature />
 </PageLayout>

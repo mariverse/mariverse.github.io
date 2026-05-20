@@ -66,12 +66,13 @@ export const theme: ThemeUserConfig = {
         title: '京ICP备2022002869号-2',
         link: 'https://beian.miit.gov.cn/',
         style: 'text-xs text-muted-foreground' // Uno/TW CSS class
-      },
-      {
-        title: '萌ICP备20254869号',
-        link: 'https://icp.gov.moe/?keyword=20254869',
-        style: 'text-xs text-muted-foreground' // Uno/TW CSS class
       }
+      // You may also add other links here like below
+      // {
+      //   title: '萌ICP备20254869号',
+      //   link: 'https://icp.gov.moe/?keyword=20254869',
+      //   style: 'text-xs text-muted-foreground' // Uno/TW CSS class
+      // }
     ],
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
@@ -105,7 +106,7 @@ export const integ: IntegrationUserConfig = {
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://arthals.ink/' },
+      { name: 'Link', val: 'https://mariverser.github.io/' },
       { name: 'Avatar', val: 'https://cdn.arthals.ink/Arthals.png' }
     ],
     // Cache avatars in `public/avatars/` to improve user experience.
@@ -145,9 +146,9 @@ export const integ: IntegrationUserConfig = {
   waline: {
     enable: true,
     // Server service link
-    server: 'https://waline.arthals.ink',
+    server: 'https://waline-mariverse.netlify.app/.netlify/functions/comment',
     // Refer https://waline.js.org/en/guide/features/emoji.html
-    emoji: ['bmoji', 'weibo'],
+    emoji: ['qq', 'tw-emoji', 'bilibili'],
     // Refer https://waline.js.org/en/reference/client/props.html
     additionalConfigs: {
       // search: false,

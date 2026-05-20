@@ -12,22 +12,12 @@ import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.jpg'
 import config from '@/site-config'
 
-const webDevelopment = [
-  'Vue.js',
-  'Nuxt.js',
-  'Node.js',
-  'React.js',
-  'TypeScript',
-  'JavaScript',
-  'CSS',
-  'HTML'
-]
-const generalProgramming = ['Python', 'PyTorch', 'C', 'C++', 'C#', 'R', 'MySQL', 'PostgreSQL']
-const developmentTools = ['VSCode', 'Vim', 'Git', 'Linux', 'Docker', 'Nginx']
-const designTools = ['Figma', 'Photoshop', 'Illustrator']
+const generalProgramming = ['MATLAB', 'C', 'Rust', 'JavaScript/TypeScript', 'AI']
+const developmentTools = ['Windows', 'VSCode', 'Git', 'WSL2', 'Fish Shell', 'Nanovim', 'OpenCode']
+const designTools = ['Figma', 'Excalidraw', 'Obsidian', 'AI']
 const others = ['Markdown', 'LaTeX']
 
-const MAX_POSTS = 10
+const MAX_POSTS = 5
 const allPosts = await getBlogCollection()
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 ---
@@ -57,29 +47,18 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
-        <p class='text-muted-foreground mt-1'>Developer / Designer / <del>Medical student </del></p>
+        <p class='text-muted-foreground mt-1'>Engineer / PCB Designer / Son</p>
         <div class='flex flex-col gap-2 leading-6 text-muted-foreground'>
-          <p>你好，我叫 Arthals，是一个兴趣使然、热爱编程的医学生。</p>
-          <p>
-            目前就读于北京大学医学部，同时修读计算机科学技术双学位。一边被
-            <del> 病理病生理药理 </del>
-            内外妇儿折磨，一边在
-            <del> ICS 的 Lab 作业 </del> PyTorch 中 debug 到头秃。
-          </p>
-          <p>我即将在北京大学先进制造与机器人学院攻读博士学位。</p>
-          <p>我的兴趣主要在 Large Language Model / Embodied AI 方向。</p>
-          <p>我喜欢 Minecraft。</p>
+          <p>你好，我是邹海达，是一个兴趣使然、热爱硬件的工程师。</p>
+          <p>我的兴趣主要在低功耗设计 / Embodied AI 方向。</p>
+          <p>我喜欢羽毛球。</p>
           <div class='mt-1 flex gap-x-2'>
-            <!-- <img
-              src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fzhuozhiyongde&count_bg=%23000000&title_bg=%23000000&icon=spacex.svg&icon_color=%23E7E7E7&title=Hits&edge_flat=true'
-              class='rounded-md border'
-            /> -->
-            <img
-              alt='CodeTime Badge'
-              src='https://shields.jannchie.com/endpoint?style=flat&color=222&url=https%3A%2F%2Fapi.codetime.dev%2Fv3%2Fusers%2Fshield%3Fuid%3D20455'
-              class='rounded-md border'
-            />
-          </div>
+            <a href='https://wakatime.com/@94eb477c-75cd-47c9-9786-cd85b67c563d'
+              ><img
+                src='https://wakatime.com/badge/user/94eb477c-75cd-47c9-9786-cd85b67c563d.svg?style=default'
+                alt='Total time coded since May 17 2026'
+              /></a
+            ></div>
         </div>
         <Button title='More about me' class='w-fit self-end' href='/about' style='ahead' />
       </Section>
@@ -130,26 +109,26 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
       <Section title='Education'>
         <Card
           as='a'
-          heading='北京大学'
-          subheading='预防医学 & 计算机科学技术双学位'
-          date='August 2021 - Present'
-          href='https://www.pku.edu.cn/'
+          heading='西安交通大学'
+          subheading='生物医学工程'
+          date='August 2018 - July 2022'
+          href='https://xjtu.edu.cn/'
         >
           <img
             class='absolute end-0 z-0 m-0 -my-3 h-full w-1/2 object-cover opacity-40'
-            src='/images/PKU.svg'
+            src='/images/XJTU.svg'
           />
         </Card>
         <Card
           as='a'
-          heading='中国人民大学附属中学'
-          subheading='早培班 & 人工智能实验班'
-          date='August 2014 - July 2021'
-          href='https://www.rdfz.cn/'
+          heading='江西省抚州市第一中学'
+          subheading='&nbsp;'
+          date='September 2012 - June 2018'
+          href='https://jxfzyz.net/'
         >
           <img
             class='absolute end-0 z-0 m-0 -my-3 h-full w-1/2 object-cover opacity-40'
-            src='/images/RDFZ.svg'
+            src='/images/FZYZ.svg'
           />
         </Card>
       </Section>
@@ -194,7 +173,6 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
       </Section> -->
 
       <Section title='Skills'>
-        <SkillLayout title='Web' skills={webDevelopment} />
         <SkillLayout title='Programming' skills={generalProgramming} />
         <SkillLayout title='Tools' skills={developmentTools} />
         <SkillLayout title='Design' skills={designTools} />
