@@ -5,8 +5,6 @@ updatedDate: 2025-11-25 22:13:57
 description: '环境配置什么的真是烦死辣！'
 tags:
   - Windows
-  - Shell
-  - WSL
   - Initialize
 language: '中文'
 ---

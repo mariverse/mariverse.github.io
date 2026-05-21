@@ -10,7 +10,6 @@ import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import { remarkAlert } from 'remark-github-blockquote-alert'
 import remarkMath from 'remark-math'
-import UnoCSS from 'unocss/astro'
 
 // Others
 // import { visualizer } from 'rollup-plugin-visualizer'

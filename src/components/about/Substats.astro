@@ -21,6 +21,28 @@ const { stats } = Astro.props as Props
 async function fetchCount(item: SubstatsItem) {
   if (!item.api) return
   try {
+    // Bilibili: 直接调用官方 API（api.swo.moe 代理已失效）
+    if (item.api.startsWith('bilibili/')) {
+      const uid = item.api.replace('bilibili/', '')
+      const res = await fetch(`https://api.bilibili.com/x/relation/stat?vmid=${uid}`)
+      const data = await res.json()
+      item.count = data.data?.follower
+      return
+    }
+
+    // Zhihu: 直接调用官方 API（api.swo.moe 代理已失效）
+    if (item.api.startsWith('zhihu/')) {
+      const username = item.api.replace('zhihu/', '')
+      const res = await fetch(
+        `https://www.zhihu.com/api/v4/members/${username}?include=voteup_count,follower_count`
+      )
+      const data = await res.json()
+      // text === 'voteups' 时返回赞同数，否则返回粉丝数
+      item.count = item.text === 'voteups' ? data.voteup_count : data.follower_count
+      return
+    }
+
+    // 其他平台：api.swo.moe 接口可用（GitHub、Steam 等）
     const response = await fetch(`https://api.swo.moe/stats/${item.api}`)
     const data = await response.json()
     if (data.failed) {
@@ -64,10 +86,10 @@ await Promise.all(stats.map(fetchCount))
   }
 </div>
 <div class='mt-2 text-right text-sm'>
-  Display real-time; powered by <a
+  pseudo-real-time; powered by <a
     class='text-muted-foreground'
     href='http://github.com/spencerwooo/substats'
     target='_blank'
     rel='noopener noreferrer'>Substats</a
-  >
+  >, modified by me.
 </div>

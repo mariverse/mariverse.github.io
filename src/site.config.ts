@@ -1,4 +1,4 @@
-import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types';
+import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types';
 
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
@@ -108,9 +108,7 @@ export const integ: IntegrationUserConfig = {
       { name: 'Desc', val: theme.description || 'Null' },
       { name: 'Link', val: 'https://mariverser.github.io/' },
       { name: 'Avatar', val: 'https://cdn.arthals.ink/Arthals.png' }
-    ],
-    // Cache avatars in `public/avatars/` to improve user experience.
-    cacheAvatar: false,
+    ]
   },
   // Enable page search function
   pagefind: true,
@@ -157,8 +155,7 @@ export const integ: IntegrationUserConfig = {
       locale: {
         reaction0: 'Like',
         placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
-      },
-      imageUploader: false
+      }
     }
   }
 }

@@ -1,14 +1,12 @@
 ---
-import { Image } from 'astro:assets'
-
 import { Button, Collapse, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 import Sponsors from '@/components/projects/Sponsors.astro'
 import Sponsorship from '@/components/projects/Sponsorship.astro'
-import alipay from '@/assets/alipay-qrcode.jpg'
+import alipay from '@/assets/alipay-qrcode.png'
 import KeyIcon from '@/assets/icons/key.svg'
-import wechat from '@/assets/wechat-qrcode.jpg'
+import wechat from '@/assets/wechat-qrcode.png'
 
 const headings = [
   { depth: 2, slug: 'theme', text: 'Theme' },
@@ -20,7 +18,7 @@ const headings = [
 ]
 ---
 
-<PageLayout title='Projects' {headings} view>
+<PageLayout title='Projects' {headings} comment>
   <p>如果你认为我的工作很有用或有趣，您可以捐赠以支持我的工作，或联系我讨论项目。</p>
   <Button title='赞赏我的工作' class='w-fit' href='#sponsorship'>
     <Icon class='size-5' name='receive-money' slot='before' />
@@ -69,49 +67,6 @@ const headings = [
           { type: 'github', href: 'https://github.com/zhuozhiyongde/PKUElective2024Spring' },
           { type: 'doc', href: 'https://docs.arthals.ink/docs/pku-auto-elective' }
         ]
-      },
-      {
-        name: '🤖 PKUHSC Auto Elective',
-        description: '北京大学医学部刷课机',
-        links: [
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/pkuhsc-autoelective' },
-          { type: 'doc', href: 'https://docs.arthals.ink/docs/pkuhsc-auto-elective' }
-        ]
-      },
-      {
-        name: '🎓 PKU Auto Reservation',
-        description: '北京大学自动预约入校',
-        links: [
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/pku-auto-reservation' },
-          { type: 'doc', href: 'https://docs.arthals.ink/docs/pku-auto-reservation' }
-        ]
-      },
-      {
-        name: '🌈 PKU Grade Watcher',
-        description: '北京大学成绩更新监测脚本',
-        links: [{ type: 'github', href: 'https://github.com/zhuozhiyongde/pku-grade-watcher' }]
-      },
-      {
-        name: '🌈 Grade Huh Moe',
-        description: '为医学部同学提供类似北大树洞的成绩查询，支持双学位混合查询',
-        links: [
-          { type: 'site', href: 'https://grade.arthals.ink' },
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/grade-huh-moe' },
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/grade-huh-moe-backend' }
-        ]
-      },
-      {
-        name: '🌟 Gaze Stars',
-        description: '根据 GitHub Star 列表自动生成 README 的 GitHub Action',
-        links: [{ type: 'github', href: 'https://github.com/zhuozhiyongde/gaze-stars' }]
-      },
-      {
-        name: '💯 Quiz Huh Moe',
-        description: '为医学部同学提供选择题在线刷题网站',
-        links: [
-          { type: 'site', href: 'https://quiz.huh.moe' },
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/Med-Quiz' }
-        ]
       }
     ]}
   />
@@ -135,7 +90,7 @@ const headings = [
     />
   </Collapse> -->
 
-  <h2 id='learnings'>Learnings</h2>
+  <h2 id='learnings'>Recommendations</h2>
   <ProjectSection
     class='my-2'
     projects={[
@@ -160,56 +115,12 @@ const headings = [
         ]
       },
       {
-        name: '人工智能基础 / AI 基础',
-        description: '北京大学 2024 年春季人工智能基础课程笔记、作业、往年题和经验',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Fundamentals-Of-Artificial-Intelligence-2024Spring-PKU'
-          }
-        ]
-      },
-      {
-        name: '简明量子力学 / 简量',
-        description: '北京大学 2024 年春季简明量子力学课程作业、往年题和经验',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Simplified-Quantum-Mechanics-2024Spring-PKU'
-          }
-        ]
-      },
-      {
-        name: '编译原理 / 编译',
-        description: '北京大学 2024 年秋季编译原理课程笔记、作业、往年题和经验',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Compiler-Principles-2024Fall-PKU'
-          },
-          {
-            type: 'release',
-            href: 'https://github.com/zhuozhiyongde/SysY-Compiler-2024Fall-PKU'
-          }
-        ]
-      },
-      {
         name: '信息学中的概率统计 / 信概统',
         description: '北京大学 2024 年秋季信息学中的概率统计课程笔记、作业、往年题和经验',
         links: [
           {
             type: 'github',
             href: 'https://github.com/zhuozhiyongde/Probability-Theory-and-Statistics-2024Fall-PKU'
-          }
-        ]
-      },
-      {
-        name: '计算机视觉导论 / CV 导论',
-        description: '北京大学 2025 年春季计算机视觉导论课程笔记、作业、往年题和 CheatSheet',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Introduction-To-Computer-Vision-2025Spring-PKU'
           }
         ]
       },
@@ -246,11 +157,11 @@ const headings = [
   <h2 id='gpg-signature'>GPG Signature</h2>
   <p>
     你可以通过检查 GPG 签名来验证我签名的文件的真实性。我的 GPG 密钥是 <code
-      >43AAB8A483D43DFFAFD7C8C8DAAAA2D31BB0250E</code
+      >CC30E2C29D5114489FD60B02A0DADBEB9F897A62</code
     >，你可以在 openpgp 密钥服务器上找到它或从那里下载。
   </p>
   <Button
-    href='https://keys.openpgp.org/search?q=43AAB8A483D43DFFAFD7C8C8DAAAA2D31BB0250E'
+    href='https://keys.openpgp.org/search?q=CC30E2C29D5114489FD60B02A0DADBEB9F897A62'
     title='验证密钥'
     target='_blank'
   >
