@@ -6,32 +6,419 @@ const meta = {
   description: 'Not found',
   title: '404'
 }
+
+const messages: Record<string, string> = {
+  '0000': '坐和放宽，系统正在执行 NOP 指令。您可以点击开关，看看会发生什么。',
+  '0001': '仅有一个信号灯亮起。问题非常具体：此页面不存在。',
+  '0010': '检测到非对齐访问。请重新对齐您的期望，或放弃。',
+  '0011': '双灯模式已启动。您请求的页面已离开，未留下转发地址。',
+  '0100': '状态位正在翻转。请检查时序，以及人生选择。',
+  '0101': '奇偶校验失败。您的 URL 包含过多奇数。请尝试偶数。',
+  '0110': '检测到总线冲突。多个设备同时访问虚空。请排队。',
+  '0111': '三灯模式激活。问题已解决 75%。剩余 25% 是找到页面。',
+  '1000': '最高位已置位，但权限仍不足。请联系管理员（管理员也迷路了）。',
+  '1001': '检测到对称性。页面可能存在于平行宇宙。请尝试镜像屏幕。',
+  '1010': '交错模式。请检查内存条是否插紧，以及您是否清醒。',
+  '1011': '大多数信号灯已亮起。然而您仍在此处迷路，正如人生。',
+  '1100': '低位关闭。基础架构损坏，或您输入了错误的 URL。',
+  '1101': '抱歉出了点问题，但我做对了。是您请求有问题。',
+  '1110': '只差一位。您的页面近在咫尺，就像成功一样。',
+  '1111': '所有系统运行正常。除了您要找的页面，它选择了自由。'
+}
 ---
 
 <PageLayout {meta}>
   <script is:inline>
-    // 获取页面 url，如：https://arthals.ink/posts/experience/attack-lab
-    // 根据 /  进行分割，只要最后一段：attack-lab
-    // 然后导航到 /blog/ + 最后一段
-    // 如：https://arthals.ink/posts/experience/attack-lab -> /blog/attack-lab
-    // 然后进行页面跳转
     const url = new URL(window.location.href)
     const path = url.pathname.split('/')
-    // 如果发现 posts 字样，则进行页面跳转
     if (path.includes('posts')) {
       const newUrl = `/blog/${path.pop()}`
-      // 进行页面跳转
       window.location.href = newUrl
     }
   </script>
-  <div class='px-4 py-10 text-center sm:px-6 lg:px-8'>
-    <h1 class='block text-7xl font-bold sm:text-9xl'>404</h1>
-    <!-- <p class='mt-3 text-muted-foreground'>
-      本站最近更换了框架，导致路径导航失效，你或许可以尝试使用<a href='/search'>搜索</a
-      >来重新找到相关博文
-    </p> -->
-    <p class='mt-3 text-muted-foreground'>Oops, something went wrong.</p>
-    <p class='text-lg'>Sorry, your destination has gone astray.</p>
-    <Button title='Back to home' href='/' variant='ahead' class='mt-5' />
+
+  <div class='flex flex-col items-center flex-1 w-full text-center relative'>
+    <!-- BSOD Overlay -->
+    <div id='bsod-overlay' class='bsod-overlay'>
+      <div class='bsod-content'>
+        <div class='bsod-face'>:(</div>
+        <p class='bsod-text'>你的浏览器遇到了问题，需要刷新页面。</p>
+        <p class='bsod-text'>我们只收集某些错误信息，然后假装什么都没发生。</p>
+        <div class='bsod-detail'>
+          <div class='bsod-qr'></div>
+          <div class='bsod-info'>
+            <p>有关此问题的详细信息和可能的解决方法，请访问 </p>
+            <p>https://这你都信.com/stopcode</p>
+            <p>终止代码：PAGE_NOT_FOUND_404</p>
+            <p>失败的操作：astro-pure/components/pages</p>
+          </div>
+        </div>
+        <p class='bsod-hint'>点击屏幕或等待 8 秒继续...</p>
+        <label class='bsod-skip-label'>
+          <input type='checkbox' id='bsod-skip' />
+          <span>以后不再显示此界面</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Top section: 404 + Oops + MUX, centered vertically -->
+    <div class='flex flex-1 flex-col items-center justify-center gap-8 py-10 w-full px-4'>
+      <h1 class='block text-7xl font-bold tracking-wider sm:text-9xl'>
+        404
+      </h1>
+      <p class='text-lg text-muted-foreground'>Oops, your destination has gone astray.</p>
+
+      <!-- MUX Panel -->
+      <div class='mx-auto flex w-full max-w-xl flex-col items-center gap-8 md:flex-row md:items-center md:justify-center md:gap-12'>
+        
+        <!-- Left: Microsoft Logo Windows -->
+        <div class='flex flex-col items-center'>
+          <div class='logo-grid'>
+            <div class='window' data-led='0' role='button' tabindex='0' aria-label='Toggle red LED'></div>
+            <div class='window' data-led='1' role='button' tabindex='0' aria-label='Toggle green LED'></div>
+            <div class='window' data-led='2' role='button' tabindex='0' aria-label='Toggle blue LED'></div>
+            <div class='window' data-led='3' role='button' tabindex='0' aria-label='Toggle yellow LED'></div>
+          </div>
+          <div class='mt-3 font-mono text-xs text-muted-foreground tracking-widest uppercase'>MS MUX</div>
+        </div>
+
+        <!-- Right: Control Panel -->
+        <div class='flex flex-col items-center gap-5 md:items-start'>
+          <!-- Switches -->
+          <div class='flex gap-3'>
+            {['S3', 'S2', 'S1', 'S0'].map((label, i) => (
+              <div class='flex flex-col items-center gap-2'>
+                <button 
+                  class='switch' 
+                  data-switch={i}
+                  aria-label={`Toggle ${label}`}
+                  aria-pressed='false'
+                >
+                  <span class='switch-track'>
+                    <span class='switch-thumb'></span>
+                  </span>
+                </button>
+                <span class='font-mono text-xs text-muted-foreground'>{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Binary readout -->
+          <div class='font-mono text-sm text-muted-foreground'>
+            BIN: <span id='bin-readout' class='text-foreground font-bold tracking-wider'>0000</span>
+          </div>
+
+          <!-- Message display -->
+          <div 
+            id='mux-message' 
+            class='min-h-[4.5rem] max-w-[260px] text-sm leading-relaxed text-muted-foreground'
+          >
+            系统正在执行 NOP 指令。您的页面什么也不做，正如预期。
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Show BSOD again -->
+    <div id='show-bsod-wrapper' class='pb-4 w-full px-4 hidden'>
+      <button id='show-bsod-btn' class='show-bsod-btn' type='button'>
+        我要看蓝屏
+      </button>
+    </div>
+
+    <!-- Back button anchored to bottom -->
+    <div class='pb-10 w-full px-4'>
+      <Button title='Back to home' href='/' variant='ahead' />
+    </div>
   </div>
+
+  <script define:vars={{ messages }}>
+    const windows = document.querySelectorAll('.window')
+    const switches = document.querySelectorAll('.switch')
+    const binReadout = document.getElementById('bin-readout')
+    const messageEl = document.getElementById('mux-message')
+    
+    let state = [false, false, false, false]
+    
+    function update() {
+      const binStr = state.map(s => s ? '1' : '0').join('')
+      binReadout.textContent = binStr
+      
+      windows.forEach((win, i) => {
+        if (state[i]) {
+          win.classList.add('on')
+        } else {
+          win.classList.remove('on')
+        }
+      })
+      
+      switches.forEach((sw, i) => {
+        const thumb = sw.querySelector('.switch-thumb')
+        if (state[i]) {
+          thumb.classList.add('on')
+          sw.setAttribute('aria-pressed', 'true')
+        } else {
+          thumb.classList.remove('on')
+          sw.setAttribute('aria-pressed', 'false')
+        }
+      })
+      
+      messageEl.textContent = messages[binStr] || messages['0000']
+    }
+    
+    function toggle(index) {
+      state[index] = !state[index]
+      update()
+    }
+    
+    windows.forEach((win, i) => {
+      win.addEventListener('click', () => toggle(i))
+      win.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          toggle(i)
+        }
+      })
+    })
+    
+    switches.forEach((sw, i) => {
+      sw.addEventListener('click', () => toggle(i))
+    })
+    
+    update()
+
+    // BSOD overlay
+    const bsodOverlay = document.getElementById('bsod-overlay')
+    const bsodSkipCheckbox = document.getElementById('bsod-skip')
+    const showBsodWrapper = document.getElementById('show-bsod-wrapper')
+    const showBsodBtn = document.getElementById('show-bsod-btn')
+
+    function hideBsod() {
+      bsodOverlay.classList.add('bsod-fade-out')
+      if (bsodSkipCheckbox && bsodSkipCheckbox.checked) {
+        localStorage.setItem('bsod-skip', 'true')
+        if (showBsodWrapper) showBsodWrapper.classList.remove('hidden')
+      }
+    }
+
+    function showBsod() {
+      localStorage.removeItem('bsod-skip')
+      bsodOverlay.classList.remove('bsod-fade-out')
+      bsodOverlay.style.display = ''
+      if (showBsodWrapper) showBsodWrapper.classList.add('hidden')
+      bsodOverlay.addEventListener('click', hideBsod)
+      setTimeout(hideBsod, 8000)
+    }
+
+    if (bsodOverlay) {
+      if (localStorage.getItem('bsod-skip') === 'true') {
+        bsodOverlay.style.display = 'none'
+        if (showBsodWrapper) showBsodWrapper.classList.remove('hidden')
+      } else {
+        bsodOverlay.addEventListener('click', hideBsod)
+        setTimeout(hideBsod, 8000)
+      }
+    }
+
+    if (showBsodBtn) {
+      showBsodBtn.addEventListener('click', showBsod)
+    }
+  </script>
 </PageLayout>
+
+<style>
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 60px);
+    grid-template-rows: repeat(2, 60px);
+    gap: 3px;
+    padding: 6px;
+    background: hsl(var(--muted));
+    border-radius: 3px;
+    border: 2px solid hsl(var(--border));
+  }
+
+  .window {
+    width: 60px;
+    height: 60px;
+    background: hsl(var(--muted-foreground) / 0.12);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 100ms ease;
+    position: relative;
+  }
+
+  .window:hover {
+    background: hsl(var(--muted-foreground) / 0.2);
+  }
+
+  .window:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  .window.on {
+    filter: saturate(0.55);
+  }
+
+  .window.on[data-led='0'] { background: #F25022; }
+  .window.on[data-led='1'] { background: #7FBA00; }
+  .window.on[data-led='2'] { background: #00A4EF; }
+  .window.on[data-led='3'] { background: #FFB900; }
+
+  :global(.dark) .window.on[data-led='0'] { box-shadow: 0 0 18px rgba(242, 80, 34, 0.35); }
+  :global(.dark) .window.on[data-led='1'] { box-shadow: 0 0 18px rgba(127, 186, 0, 0.35); }
+  :global(.dark) .window.on[data-led='2'] { box-shadow: 0 0 18px rgba(0, 164, 239, 0.35); }
+  :global(.dark) .window.on[data-led='3'] { box-shadow: 0 0 18px rgba(255, 185, 0, 0.35); }
+
+  .switch {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .switch-track {
+    display: block;
+    width: 32px;
+    height: 52px;
+    background: hsl(var(--muted));
+    border: 2px solid hsl(var(--border));
+    border-radius: 3px;
+    position: relative;
+    padding: 3px;
+  }
+
+  .switch-thumb {
+    display: block;
+    width: 100%;
+    height: 20px;
+    background: hsl(var(--muted-foreground) / 0.25);
+    border-radius: 2px;
+    transition: transform 50ms ease, background 50ms ease;
+    position: relative;
+  }
+
+  .switch-thumb.on {
+    transform: translateY(22px);
+    background: hsl(var(--primary));
+  }
+
+  .switch:focus-visible .switch-track {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  .bsod-overlay {
+    position: absolute;
+    inset: 0;
+    background: #0078D7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    opacity: 0.95;
+    transition: opacity 1.2s ease-out;
+    cursor: pointer;
+  }
+  .bsod-overlay.bsod-fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .bsod-content {
+    text-align: left;
+    max-width: 640px;
+    padding: 2rem;
+    width: 100%;
+  }
+  .bsod-face {
+    font-size: 5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+  .bsod-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .bsod-detail {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    align-items: flex-start;
+  }
+  .bsod-qr {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+  .bsod-info {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+  .bsod-info p {
+    margin: 0 0 0.5rem;
+  }
+  .bsod-info p:last-child {
+    margin-bottom: 0;
+  }
+  .bsod-hint {
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    opacity: 0.55;
+    text-align: center;
+  }
+
+  .bsod-skip-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .bsod-skip-label:hover {
+    opacity: 0.9;
+  }
+
+  .bsod-skip-label input[type='checkbox'] {
+    width: 14px;
+    height: 14px;
+    accent-color: #fff;
+    cursor: pointer;
+  }
+
+  .show-bsod-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: hsl(var(--foreground));
+    background: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .show-bsod-btn:hover {
+    background: hsl(var(--muted-foreground) / 0.15);
+    border-color: hsl(var(--muted-foreground) / 0.3);
+  }
+
+  .show-bsod-btn:active {
+    transform: translateY(1px);
+  }
+</style>

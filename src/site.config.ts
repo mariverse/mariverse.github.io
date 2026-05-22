@@ -101,13 +101,13 @@ export const integ: IntegrationUserConfig = {
   // See: https://astro-pure.js.org/docs/integrations/links
   links: {
     // Friend logbook
-    logbook: [{ date: '2024-01-16', content: '开始接纳新的伙伴！' }],
+    logbook: [{ date: '2026-06-01', content: '开始接纳新的伙伴！' }],
     // Yourself link info
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://mariverser.github.io/' },
-      { name: 'Avatar', val: 'https://cdn.arthals.ink/Arthals.png' }
+      { name: 'Link', val: 'https://mariverse.github.io/' },
+      { name: 'Avatar', val: 'https://raw.githubusercontent.com/mariverse/mariverse.png' }
     ]
   },
   // Enable page search function
