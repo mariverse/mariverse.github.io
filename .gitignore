@@ -21,8 +21,9 @@ pnpm-lock.yaml
 
 ### Others ###
 # Agent Configurations (temp ignore)
-.agents/*
+.agents/
 AGENTS.md
+opencode.json
 skills-lock.json
 
 # Windows file system metadata
