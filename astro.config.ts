@@ -77,7 +77,7 @@ export default defineConfig({
   // Server Options
   server: {
     host: true,
-    allowedHosts: ['arthals.ink']
+    allowedHosts: ['mariverse.github.io']
   },
   // Markdown Options
   markdown: {

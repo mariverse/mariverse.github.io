@@ -59,14 +59,14 @@ export const theme: ThemeUserConfig = {
   footer: {
     // Year format
     // year: `© ${new Date().getFullYear()}`,
-    year: `© 2025 - ${new Date().getFullYear()}`,
+    year: `© 2024 - ${new Date().getFullYear()}`,
     links: [
       // Registration link
-      {
-        title: '京ICP备2022002869号-2',
-        link: 'https://beian.miit.gov.cn/',
-        style: 'text-xs text-muted-foreground' // Uno/TW CSS class
-      }
+      // {
+      //   title: '京ICP备2022002869号-2',
+      //   link: 'https://beian.miit.gov.cn/',
+      //   style: 'text-xs text-muted-foreground' // Uno/TW CSS class
+      // }
       // You may also add other links here like below
       // {
       //   title: '萌ICP备20254869号',
@@ -101,13 +101,13 @@ export const integ: IntegrationUserConfig = {
   // See: https://astro-pure.js.org/docs/integrations/links
   links: {
     // Friend logbook
-    logbook: [{ date: '2026-06-01', content: '开始接纳新的伙伴！' }],
+    logbook: [{ date: '2024-08-01', content: '开始接纳新的伙伴！' }],
     // Yourself link info
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
       { name: 'Link', val: 'https://mariverse.github.io/' },
-      { name: 'Avatar', val: 'https://raw.githubusercontent.com/mariverse/mariverse.png' }
+      { name: 'Avatar', val: 'https://avatars.githubusercontent.com/u/60534959' }
     ]
   },
   // Enable page search function
@@ -155,7 +155,8 @@ export const integ: IntegrationUserConfig = {
       locale: {
         reaction0: 'Like',
         placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
-      }
+      },
+      imageUploader: false
     }
   }
 }

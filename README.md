@@ -1,8 +1,10 @@
-# Arthals Ink
+# Haida's blog
 
-我的个人博客，使用 Astro 构建，所使用模版为 [Astro Theme Pure](https://github.com/cworld1/astro-theme-pure)。
+我的个人博客，使用 Astro 构建，在 [Arthal Ink](https://github.com/zhuozhiyongde/Arthals-Ink)的基础上大幅修改，所使用模版为 [Astro Theme Pure](https://github.com/cworld1/astro-theme-pure)。
 
-欢迎访问 [Arthals Ink](https://arthals.ink)！
+Shout out to 两位模板作者，@cworld1 和 @zhuozhiyongde。
+
+欢迎访问 [Haida 的个人博客](https://mariverse.github.io)！
 
 ## 📜 License
 

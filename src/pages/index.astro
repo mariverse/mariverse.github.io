@@ -35,10 +35,10 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
       <div class='flex flex-col items-center gap-y-4'>
         <h1 class='text-3xl font-bold'>{config.author}</h1>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
-          <Label title='China / Beijing'>
+          <Label title='China / JiangXi (赣)'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
-          <Label title='GitHub' as='a' href='https://github.com/zhuozhiyongde' target='_blank'>
+          <Label title='GitHub' as='a' href='https://github.com/mariverse' target='_blank'>
             <Icon name='github' class='size-5' slot='icon' />
           </Label>
         </div>
@@ -47,18 +47,20 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
-        <p class='text-muted-foreground mt-1'>Engineer / PCB Designer / Son</p>
+        <p class='text-muted-foreground mt-1'>Engineer / Omnivorous / Son / Study Forever</p>
         <div class='flex flex-col gap-2 leading-6 text-muted-foreground'>
-          <p>你好，我是邹海达，是一个兴趣使然、热爱硬件的工程师。</p>
-          <p>我的兴趣主要在低功耗设计 / Embodied AI 方向。</p>
-          <p>我喜欢羽毛球。</p>
+          <p>你好，我是邹海达，是一个兴趣广泛、热爱硬件的工程师。</p>
+          <p>我是杂事爱好者，兴趣广泛，包括电路设计绘图、硬件调试、信号处理方向。</p>
+          <p>我喜欢羽毛球、夜跑、阅读。每月跑量不少于 5km。</p>
+          <p>如果你对我感兴趣，或正在寻求帮助，欢迎联系我！</p>
           <div class='mt-1 flex gap-x-2'>
             <a href='https://wakatime.com/@94eb477c-75cd-47c9-9786-cd85b67c563d'
               ><img
                 src='https://wakatime.com/badge/user/94eb477c-75cd-47c9-9786-cd85b67c563d.svg?style=default'
                 alt='Total time coded since May 17 2026'
               /></a
-            ></div>
+            >
+          </div>
         </div>
         <Button title='More about me' class='w-fit self-end' href='/about' style='ahead' />
       </Section>
@@ -78,40 +80,111 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
       }
 
       {
-        /* <Section title='Experience'>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      >
-        <ul class='ms-4 list-disc text-muted-foreground'>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-            molestiae laboriosam pariatur!
+        (
+          <Section title='Occupation'>
+            <Card
+              heading='医工学人'
+              subheading='理事会/技术负责人'
+              date='Apr 2024 - May 2025'
+            >
+              <img
+                class='absolute end-2 top-2 z-0 h-25 w-auto object-contain opacity-40'
+                src='https://yigongxueren.com/wp-content/uploads/2025/03/New-logo-202410-1-09-s80.png'
+              />
+              <ul class='ms-4 list-disc text-muted-foreground'>
+                <li>
+                  AI 自动化数据管线与多模态应用落地
+                  <ul class='ms-4 list-disc'>
+                    <li>
+                      基于扣子（Coze）平台架构并维护了一套一站式半自动化工作流，利用网络爬虫技术实现每日行业数据的敏捷抓取。
+                    </li>
+                    <li>
+                      编写并优化
+                      Prompt（提示词工程），调用大语言模型进行垂直领域专业文本的二次重构与精炼。
+                    </li>
+                    <li>
+                      接入多模态 API
+                      自动渲染生成音频与视觉封面，系统已稳定高可用运转至今，拓宽团队传播媒介。
+                    </li>
+                  </ul>
+                </li>
 
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-          </li>
-        </ul>
-      </Card>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      />
-    </Section> */
+                <li>
+                  前沿技术跟踪与文献体系建设
+                  <ul class='ms-4 list-disc'>
+                    <li>
+                      负责追踪全球前沿生物医学工程（BME）最新科研成果，深度解读并提炼前沿技术论文，沉淀高信噪比的技术知识库。
+                    </li>
+                    <li>
+                      产业视角梳理行业技术指标，建立专家链接，主导多场线上前沿技术研讨会的学术主题策划。
+                    </li>
+                  </ul>
+                </li>
+
+                <li>参与制定组织架构与发展战略</li>
+              </ul>
+            </Card>
+
+            <Card
+              heading='深圳市安保医疗科技股份有限公司'
+              subheading='科研部/学术研究员（核心技术骨干）'
+              date='July 2022 - Mar 2024'
+            >
+              <img
+                class='absolute end-2 top-2 z-0 h-25 w-auto object-contain opacity-40'
+                src='https://www.amoulmed.com/Uploads/config/62e73d9c60349.png'
+              />
+              <ul class='ms-4 list-disc text-muted-foreground'>
+                <li>
+                  技术调研与需求定义
+                  <ul class='ms-4 list-disc'>
+                    <li>
+                      深度调研同类竞品，对标国际行业标杆，系统性收集并分析竞品关键技术与临床指标。
+                    </li>
+                    <li>
+                      将临床需求转化为清晰的工程研发指标，为主导的医疗设备整机设计与核心算法迭代确定方向支撑。
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  研发小组攻关与跨单位学术协同
+                  <ul class='ms-4 list-disc'>
+                    <li>
+                      作为核心研发骨干和技术攻关带头人，主导技术方案确定、执行与测试规范的确立。
+                    </li>
+                    <li>
+                      负责与南京航空航天大学科研团队的产学研协同对接，联合攻关有限元模型构建与算法正逆问题求解。
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  产品化转化与注册合规支持
+                  <ul class='ms-4 list-disc'>
+                    <li>
+                      联合设计团队定制上位机 UI
+                      交互方案，负责技术指标到软件功能的端到端落地与功能验证。
+                    </li>
+                    <li>
+                      全程参与样机原型从算法验证到工程合规测试的转化全链路，该研究成果获批
+                      <a href='https://www.nmpa.gov.cn/datasearch/home-index.html#category=ylqx'>
+                        <strong>国家二类医疗器械注册证（粤械注准20242071568）</strong>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </Card>
+          </Section>
+        )
       }
       <Section title='Education'>
         <Card
           as='a'
           heading='西安交通大学'
           subheading='生物医学工程'
-          date='September 2018 - July 2022'
+          date='Sep 2018 - July 2022'
           href='https://xjtu.edu.cn/'
         >
           <img
@@ -122,8 +195,8 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         <Card
           as='a'
           heading='江西省抚州市第一中学'
-          subheading='&nbsp;'
-          date='September 2012 - June 2018'
+          subheading=' '
+          date='Sep 2012 - June 2018'
           href='https://jxfzyz.net/'
         >
           <img

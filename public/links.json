@@ -5,6 +5,12 @@
       "desc": "Common links included in circle friends",
       "link_list": [
         {
+          "name": "Ataniss",
+          "intro": "一个无聊的人.",
+          "link": "https://ataniss.github.io",
+          "avatar": "https://ataniss.github.io/img/avatar.png"
+        },
+        {
           "name": "Yixuan Wang",
           "intro": "来自中文系的数算助教（？",
           "link": "https://blog.yixuan-wang.site",
