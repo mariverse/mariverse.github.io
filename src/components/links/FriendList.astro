@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 
-import { cacheFriendAvatars } from '@/site-config'
+import { integ } from '@/site-config'
 
 interface AvatarCache {
   hash: string
@@ -35,7 +35,7 @@ interface Props {
 const { title, list: friendList, ...props } = Astro.props
 
 const getAvatarSrc = (friend: friend) =>
-  cacheFriendAvatars ? (friend.avatar_cache?.path ?? friend.avatar) : friend.avatar
+  integ.links?.cacheAvatar ? (friend.avatar_cache?.path ?? friend.avatar) : friend.avatar
 ---
 
 {title && <h2 id={friendList.id_name}>{title}</h2>}

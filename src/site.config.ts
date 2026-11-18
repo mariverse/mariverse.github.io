@@ -25,7 +25,7 @@ export const theme: ThemeUserConfig = {
   },
   /** Set a logo image to show in the homepage. */
   logo: {
-    src: 'src/assets/avatar.jpg',
+    src: '/src/assets/avatar.jpg',
     alt: 'Avatar'
   },
 
@@ -77,7 +77,11 @@ export const theme: ThemeUserConfig = {
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
     /** Optional details about the social media accounts for this site. */
-    social: { github: 'https://github.com/mariverse', email: 'mailto:zou.haida@qq.com' }
+    social: [
+      { icon: 'github', label: 'GitHub', href: 'https://github.com/mariverse' },
+      { icon: 'email', label: 'Email', href: 'mailto:zou.haida@qq.com' },
+      { icon: 'rss', label: 'RSS', href: '/rss.xml' }
+    ]
   },
 
   content: {
@@ -96,13 +100,11 @@ export const theme: ThemeUserConfig = {
   }
 }
 
-// Local friend cards and the cache:avatars script share this opt-in.
-export const cacheFriendAvatars = false
-
 export const integ: IntegrationUserConfig = {
   // Links management
   // See: https://astro-pure.js.org/docs/integrations/links
   links: {
+    cacheAvatar: false,
     // Friend logbook
     logbook: [{ date: '2024-08-01', content: '开始接纳新的伙伴！' }],
     // Yourself link info
@@ -164,5 +166,5 @@ export const integ: IntegrationUserConfig = {
   }
 }
 
-const config = { ...theme, integ } as Config
+const config = { ...theme, integ } satisfies Config
 export default config
