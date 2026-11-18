@@ -42,8 +42,10 @@ const { class: className } = Astro.props
         (preset) => `${config.npmCDN}/@waline/emojis@1.4.0/${preset}` as WalineEmojiPresets
       )
 
+      const mount = this.querySelector<HTMLElement>('#waline')
+      if (!mount) return
       walineInit({
-        el: '#waline',
+        el: mount,
         serverURL: walineConfig.server || '',
         emoji,
         reaction: ['/icons/heart-item.svg'],
@@ -174,7 +176,16 @@ const { class: className } = Astro.props
   }
 
   #waline :global(.wl-rss) {
-    max-width: none !important;
-    overflow: visible !important;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0.375rem 0.875rem;
+    overflow: visible;
+    transition: none;
+  }
+
+  #waline :global(.wl-rss > a) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 </style>
