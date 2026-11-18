@@ -132,13 +132,13 @@ const messages: Record<string, string> = {
     </div>
   </div>
 
-  <script define:vars={{ messages }}>
+  <script is:inline define:vars={{ messages }}>
     const windows = document.querySelectorAll('.window')
     const switches = document.querySelectorAll('.switch')
     const binReadout = document.getElementById('bin-readout')
     const messageEl = document.getElementById('mux-message')
     
-    let state = [false, false, false, false]
+    const state = [false, false, false, false]
     
     function update() {
       const binStr = state.map(s => s ? '1' : '0').join('')

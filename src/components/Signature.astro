@@ -37,7 +37,7 @@ const {
 
 <script is:inline define:vars={{ mode, drawDelay, rollbackDelay, loopPause, threshold, defaultDuration }}>
   function setupSignature(wrapper) {
-    let initialPaths = Array.from(wrapper.querySelectorAll('path'))
+    const initialPaths = Array.from(wrapper.querySelectorAll('path'))
     if (initialPaths.length === 0) return
 
     initialPaths.sort((a, b) => {
