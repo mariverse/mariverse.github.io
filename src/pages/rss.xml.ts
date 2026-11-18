@@ -60,7 +60,7 @@ const GET = async (context: AstroGlobal) => {
   return rss({
     // Basic configs
     trailingSlash: false,
-    xmlns: { h: 'http://www.w3.org/TR/html4/' },
+    xmlns: { h: 'http://www.w3.org/TR/html4/', atom: 'http://www.w3.org/2005/Atom' },
     stylesheet: '/scripts/pretty-feed-v3.xsl',
 
     // Contents
@@ -68,14 +68,23 @@ const GET = async (context: AstroGlobal) => {
     description: config.description,
     site: import.meta.env.SITE,
     items: await Promise.all(
-      allPostsByDate.map(async (post) => ({
-        pubDate: post.data.publishDate,
-        link: `/blog/${post.id}`,
-        customData: `<h:img src="${typeof post.data.heroImage?.src === 'string' ? post.data.heroImage?.src : post.data.heroImage?.src.src}" />
-          <enclosure url="${typeof post.data.heroImage?.src === 'string' ? post.data.heroImage?.src : post.data.heroImage?.src.src}" />`,
-        content: await renderContent(post, siteUrl),
-        ...post.data
-      }))
+      allPostsByDate.map(async (post) => {
+        const { title, description, publishDate, updatedDate, heroImage } = post.data
+        const cover = typeof heroImage?.src === 'string' ? heroImage.src : heroImage?.src.src
+        return {
+          title,
+          description,
+          pubDate: publishDate,
+          link: `/blog/${post.id}`,
+          customData: [
+            cover && `<h:img src="${new URL(cover, siteUrl).href.replaceAll('&', '&amp;')}" />`,
+            updatedDate && `<atom:updated>${updatedDate.toISOString()}</atom:updated>`
+          ]
+            .filter(Boolean)
+            .join(''),
+          content: await renderContent(post, siteUrl)
+        }
+      })
     )
   })
 }
