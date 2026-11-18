@@ -1,9 +1,9 @@
-import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types';
+import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types'
 
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: "Haida",
+  title: 'Haida',
   /** Will be used in index page & copyright declaration */
   author: 'Haida',
   // since: 2024,
@@ -95,6 +95,9 @@ export const theme: ThemeUserConfig = {
     share: ['weibo']
   }
 }
+
+// Local friend cards and the cache:avatars script share this opt-in.
+export const cacheFriendAvatars = false
 
 export const integ: IntegrationUserConfig = {
   // Links management
