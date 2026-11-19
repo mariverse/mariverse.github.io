@@ -110,7 +110,8 @@ const messages: Record<string, string> = {
 
           <!-- Message display -->
           <div 
-            id='mux-message' 
+            id='mux-message'
+            data-messages={JSON.stringify(messages)}
             class='min-h-[4.5rem] max-w-[260px] text-sm leading-relaxed text-muted-foreground'
           >
             系统正在执行 NOP 指令。您的页面什么也不做，正如预期。
@@ -132,13 +133,14 @@ const messages: Record<string, string> = {
     </div>
   </div>
 
-  <script define:vars={{ messages }}>
+  <script is:inline>
     const windows = document.querySelectorAll('.window')
     const switches = document.querySelectorAll('.switch')
     const binReadout = document.getElementById('bin-readout')
     const messageEl = document.getElementById('mux-message')
+    const messages = JSON.parse(messageEl.dataset.messages)
     
-    let state = [false, false, false, false]
+    const state = [false, false, false, false]
     
     function update() {
       const binStr = state.map(s => s ? '1' : '0').join('')

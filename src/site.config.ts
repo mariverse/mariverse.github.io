@@ -1,9 +1,9 @@
-import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types';
+import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types'
 
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: "Haida",
+  title: 'Haida',
   /** Will be used in index page & copyright declaration */
   author: 'Haida',
   // since: 2024,
@@ -25,7 +25,7 @@ export const theme: ThemeUserConfig = {
   },
   /** Set a logo image to show in the homepage. */
   logo: {
-    src: 'src/assets/avatar.jpg',
+    src: '/src/assets/avatar.jpg',
     alt: 'Avatar'
   },
 
@@ -77,7 +77,11 @@ export const theme: ThemeUserConfig = {
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
     /** Optional details about the social media accounts for this site. */
-    social: { github: 'https://github.com/mariverse', email: 'mailto:zou.haida@qq.com' }
+    social: [
+      { icon: 'github', label: 'GitHub', href: 'https://github.com/mariverse' },
+      { icon: 'email', label: 'Email', href: 'mailto:zou.haida@qq.com' },
+      { icon: 'rss', label: 'RSS', href: '/rss.xml' }
+    ]
   },
 
   content: {
@@ -100,6 +104,7 @@ export const integ: IntegrationUserConfig = {
   // Links management
   // See: https://astro-pure.js.org/docs/integrations/links
   links: {
+    cacheAvatar: false,
     // Friend logbook
     logbook: [{ date: '2024-08-01', content: '开始接纳新的伙伴！' }],
     // Yourself link info
@@ -161,5 +166,5 @@ export const integ: IntegrationUserConfig = {
   }
 }
 
-const config = { ...theme, integ } as Config
+const config = { ...theme, integ } satisfies Config
 export default config

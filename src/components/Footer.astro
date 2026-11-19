@@ -3,13 +3,7 @@ import config from 'virtual:config'
 import { Icon } from 'astro-pure/user'
 
 const footerConf = config.footer
-const { links = [], credits, social = {} } = footerConf
-
-// If the list does not contain rss, add it
-social.rss = {
-  label: 'RSS',
-  url: '/rss.xml'
-}
+const { links = [], credits, social = [] } = footerConf
 ---
 
 <footer class='mx-auto mb-5 mt-16 w-full'>
@@ -59,14 +53,13 @@ social.rss = {
       {/* Social Brands */}
       <div class='flex items-center gap-x-4'>
         {
-          footerConf.social &&
-            Object.entries(footerConf.social).map(([platform, { label, url }]) => (
+          social.map(({ icon, label, href }) => (
               <a
                 class='inline-block text-muted-foreground transition-all hover:text-muted-foreground/75'
-                href={url}
+                {href}
                 aria-label={label}
               >
-                <Icon name={platform as keyof typeof footerConf.social} />
+                <Icon name={icon} />
               </a>
             ))
         }

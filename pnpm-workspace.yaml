@@ -1,5 +1,8 @@
 packages:
   - '.'
+overrides:
+  # Astro 6's image service imports its own optional Sharp dependency.
+  'astro@6.4.8>sharp': '$sharp'
 allowBuilds:
   esbuild: true
   sharp: true
