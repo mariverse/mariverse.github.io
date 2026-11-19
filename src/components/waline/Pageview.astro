@@ -7,10 +7,12 @@ import { integ } from '@/site-config'
 <script>
   import { pageviewCount } from '@waline/client/pageview'
 
+  import { getWalinePath } from './path'
+
   customElements.define('waline-pageview', class extends HTMLElement {
     connectedCallback() {
       const serverURL = this.dataset.server
-      if (serverURL) pageviewCount({ serverURL, path: location.pathname })
+      if (serverURL) pageviewCount({ serverURL, path: getWalinePath(location.pathname) })
     }
   })
 </script>

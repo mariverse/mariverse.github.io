@@ -30,7 +30,7 @@
 ## Styling & Tooling
 
 - **UnoCSS** is used, not Tailwind. Config lives in `uno.config.ts`.
-- `trailingSlash: 'never'` is set in `astro.config.ts`.
+- `trailingSlash: 'ignore'` lets Astro serve paths with or without a trailing slash.
 - Prettier config: single quotes, no semicolons, 2-space indent, printWidth 100, astro parser for `.astro` files.
 - ESLint ignores: `public/scripts/*`, `scripts/*`, `.astro/`, `src/env.d.ts`.
 

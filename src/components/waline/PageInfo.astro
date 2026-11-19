@@ -9,18 +9,16 @@ interface Props {
 }
 
 const { view, comment, class: className, ...props } = Astro.props
-
-const path = Astro.url.pathname
 ---
 
 <div class={cn('text-base text-sm text-muted-foreground', className)} {...props}>
-  <span class='waline-pageview-count' data-path={path}></span> views
+  <span class='waline-pageview-count'></span> views
   {
     comment && (
       <>
         {' | '}
         <a href='#waline'>
-          <span class='waline-comment-count' data-path={path} /> comments
+          <span class='waline-comment-count' /> comments
         </a>
       </>
     )

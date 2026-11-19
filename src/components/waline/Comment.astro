@@ -23,6 +23,8 @@ const { class: className } = Astro.props
   import type { WalineEmojiPresets } from '@waline/client'
   import config from 'virtual:config'
 
+  import { getWalinePath } from './path'
+
   const walineConfig = config.integ.waline
 
   class Comment extends HTMLElement {
@@ -49,7 +51,8 @@ const { class: className } = Astro.props
         serverURL: walineConfig.server || '',
         emoji,
         reaction: ['/icons/heart-item.svg'],
-        ...walineConfig.additionalConfigs
+        ...walineConfig.additionalConfigs,
+        path: getWalinePath(location.pathname)
       })
     }
   }

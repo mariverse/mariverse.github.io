@@ -30,7 +30,7 @@ export default defineConfig({
   site: 'https://mariverse.github.io/',
   // Deploy to a sub path; See https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
   // base: '/astro-pure/',
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
 
   image: {
     responsiveStyles: true,
