@@ -2,6 +2,7 @@
 
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 // Integrations
+import mdx from '@astrojs/mdx'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
@@ -39,8 +40,11 @@ export default defineConfig({
     }
   },
 
-  // astro-pure provides sitemap, MDX and UnoCSS for this static site.
-  integrations: [AstroPureIntegration(config)],
+  // MDX 5 needs GFM enabled explicitly to render footnotes.
+  integrations: [
+    AstroPureIntegration(config),
+    mdx({ gfm: true, optimize: true, remarkRehype: { footnoteLabelProperties: {} } })
+  ],
   // root: './my-project-directory',
 
   // Prefetch Options
