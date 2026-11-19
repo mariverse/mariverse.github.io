@@ -36,9 +36,11 @@ async function fetchCount(item: SubstatsItem) {
       const res = await fetch(
         `https://www.zhihu.com/api/v4/members/${username}?include=voteup_count,follower_count`
       )
+      if (!res.ok) throw new Error(`Zhihu returned HTTP ${res.status}`)
       const data = await res.json()
       // text === 'voteups' 时返回赞同数，否则返回粉丝数
-      item.count = item.text === 'voteups' ? data.voteup_count : data.follower_count
+      const count = item.text === 'voteups' ? data.voteup_count : data.follower_count
+      if (typeof count === 'number' && Number.isFinite(count)) item.count = count
       return
     }
 
@@ -72,13 +74,13 @@ await Promise.all(stats.map(fetchCount))
           <div class='flex-1 text-foreground transition-colors group-hover:text-primary'>
             {platform}
           </div>
-          {count ? (
+          {count != null ? (
             <div class='flex items-center gap-1.5'>
               <samp>{count}</samp>
               <span class='text-sm font-normal'>{text}</span>
             </div>
           ) : (
-            'null'
+            <span class='text-sm font-normal'>Stats unavailable</span>
           )}
         </div>
       </a>
